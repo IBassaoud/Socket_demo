@@ -16,6 +16,11 @@ app.get("/", function(req, res){
 
 io.on("connection", (socket) => {
     console.log("User connection established");
+    
+    socket.on("chat message", (msg) => {
+        console.log("message : "+msg); 
+    })
+
     socket.on("disconnect", () => { //l'user ne se déconnecte que quand sa connexion a cessé
         console.log("User disconnected"); // quand la connexion est off .on 'disconnect' fonction callback console log deconnecté
     });

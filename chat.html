@@ -26,6 +26,16 @@
 
     <script>
       var socket = io(); //on appelle la méthode io
+      let form = document.getElementById("form");
+      let input = document.getElementById("input");
+
+      form.addEventListener('sumbit', function(e) {
+        e.preventDefault();
+        if(input.value){
+          socket.emit("chat message", input.value) //ici on a 2 composants emi son message et sa valeur
+          input.value='';
+        }
+      })
     </script>
 </body>
 </html>
