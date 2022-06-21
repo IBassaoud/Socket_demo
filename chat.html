@@ -23,17 +23,16 @@
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
     </form>
+
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io(); //on appelle la méthode io
       var form = document.getElementById('form');
       var input = document.getElementById('input');
       
-      form.addEventListener('sumbit', function(e) {
-        console.log(input.value);
+      form.addEventListener('submit', function(e) {
         e.preventDefault();
         if (input.value) {
-          console.log(input.value);
           socket.emit('chat message', input.value) //ici on a 2 composants emi son message et sa valeur
           input.value = '';
         }
@@ -44,7 +43,6 @@
         item.textContent = msg;
         messages.appendChild(item);
         windo.scrollTo(0, document.body.scrollHeight);
-        console.log(msg);
       });
     </script>
 </body>
